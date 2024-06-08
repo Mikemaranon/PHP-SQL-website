@@ -1,0 +1,21 @@
+PROFESORES
+-----------------------------------------------------
+id			tinyint		NOT NULL
+nombre			string		NOT NULL
+teléfono		int[9]		NOT NULL
+correo			string		NULL
+sexo			enum		NOT NULL
+id_departamento		tinyint		NOT NULL
+
+
+DEPARTAMENTOS
+-----------------------------------------------------
+id			tinyint		NOT NULL
+nombre			string 		NOT NULL
+
+========================================================================
+
+incluir estas bases en localhost/phpmyadmin
+permisos: select, update, delete, insert
+
+

@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>
+            Base de datos del profesorado
+        </title>
+        <link rel="StyleSheet" href="styles.css" type="text/css">
+        <script>
+            function validacion() {
+                let val1 = f_server() 
+                let val2 = f_name_passw() 
+                let val3 = f_database()
+
+                if (val1 == true || val2 == true || val3 == true) {
+                    alert("hay información incorrecta, porfavor compruebe los datos de nuevo");
+                    document.getElementById("formulario").action = ""
+                } else {
+                    alert("Has accedido con exito, cargando la base de datos!")
+                    document.getElementById("formulario").action = "mainWeb.php"
+                    document.formulario1.submit()
+                }
+            }
+            function f_server() {
+                let server = document.formulario1.nombre_servidor.value;
+
+                if(server != "localhost") {
+                    return true;
+                } else {
+                    return false;
+                } 
+            }
+            function f_name_passw() {
+                let pssw = document.formulario1.password.value;
+                let name = document.formulario1.nombre_usuario.value;
+
+                if(name == 'mike') {
+                    if (pssw == 'P@ssw0rd') {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
+                if(name == 'visitor') {
+                    if (pssw == 'visitor') {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } 
+                return true;  
+            }
+            function f_database() {
+                let db = document.formulario1.database.value;
+
+                if(db != "profesorado") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function visitor() {
+                document.getElementById("nombre_usuario").value = 'visitor'
+                document.getElementById("password").value = 'visitor'
+                document.getElementById("prof").selected = "true"
+
+                validacion()
+            }
+        </script>
+    </head>
+    <body>
+        <div id="heade">
+            <h1>Bienvenido al gestor de bases de datos</h1>
+        </div>
+        <fieldset><legend><strong>Introduzca los datos de acceso</strong></legend>
+            <!--<h3 align="center"><b>Para solo consultar tablas use el usuario 
+                "visitor" con password "visitor"</b></h3>-->
+            
+            <div id="contEnlaces">
+                <ul class="enlaces">
+                    <a onclick="visitor()"><li id="link"><b>Entrar como visitante</b></li></a>
+                </ul>
+            </div>
+
+            <form name="formulario1" id="formulario" action="" 
+                method=post enctype="multipart/form-data">
+                <!--<fieldset><legend class="second"><strong>Servidor</strong></legend>
+                    <p>Servidor: --><input type="text" name="nombre_servidor" class="hide"
+                        value="localhost" size="27" placeholder="ej: localhost">
+                    <!--</p></fieldset>
+                <br>-->
+                <fieldset><legend class="second"><strong>Usuario</strong></legend>
+                    <p><b>&ensp;Username: </b><input type="text" name="nombre_usuario" value="" size="27"
+                        placeholder="  ej: mike" id="nombre_usuario"></p>
+                    <p><b>&ensp;Password: </b><input type="password" name="password" value="" size="27"
+                        placeholder="  ej: P@ssw0rd" id="password"></p>
+                </fieldset>
+                <br>
+                <fieldset><legend class="second"><strong>Base de datos</strong></legend>
+                    &ensp;<select name="database">
+                        <option value="null">elige...</option>
+                        <option value="profesorado" id="prof">Profesorado</option>
+                    </select>
+                </fieldset>
+                <br>
+                <fieldset align="center"><legend class="second"><strong>Finalizar</strong></legend>
+                    <input type="submit" value="Registrarse" onclick="validacion()">
+                    <input type="reset" value="borrar">
+                </fieldset>
+            </form>
+        </fieldset>
+    </body>
+</html>
