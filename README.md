@@ -3,6 +3,7 @@ software utilizado: https://www.apachefriends.org/es/index.html
 la página principal es website/welcome.html  
 la información de la base de datos está en website/Bases/  
 ``` bash
+mv website/ /opt/lampp/htdocs/
 cd /opt/lampp
 sudo ./manager-linux-x64
 ```
